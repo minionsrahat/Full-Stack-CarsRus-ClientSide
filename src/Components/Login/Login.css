@@ -1,0 +1,93 @@
+
+/* 23. Login-reg */
+.title-background{
+background-image: url('https://themebeyond.com/html/carnation/carnation/img/bg/breadcrumb_bg.jpg');
+background-position: center;
+background-size: cover;
+padding: 120px 0;
+}
+.login-register-area.gray-lite {
+    position: relative;
+    z-index: 1;
+}
+.login-register-area.gray-lite::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50px;
+    bottom: 0;
+    width: 100%;
+    background: #f7f7f7;
+    z-index: -1;
+}
+.login-reg-wrap {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 3px 9px 0px rgba(120, 120, 120, 0.09);
+    margin-top: -50px;
+}
+.login-wrap {
+    padding: 75px 45px 75px 65px;
+}
+.login-reg-wrap .widget-title,
+.contact-form-wrap .widget-title {
+    font-size: 22px;
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.login-form .form-grp {
+    margin-bottom: 35px;
+}
+.login-form .form-grp label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #6a6a6a;
+    margin-bottom: 10px;
+}
+.login-form .form-grp input {
+    width: 100%;
+    display: block;
+    border: 1px solid #ebebeb;
+    background: #f7f7f7;
+    border-radius: 3px;
+    padding: 13px 20px;
+}
+.login-form .form-grp input::placeholder,
+.contact-form-wrap .login-form .form-grp textarea::placeholder {
+    color: #848282;
+}
+.login-form > .or {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.login-form .action {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
+    margin-top: 4px;
+}
+.login-form .action li {
+    margin-bottom: 10px;
+    margin-right: 15px;
+    font-weight: 14px;
+    font-weight: 500;
+}
+.login-form .action li a {
+    display: block;
+}
+.login-form .btn {
+    padding: 19px 45px;
+}
+.login-wrap.reg-wrap {
+    padding: 75px 65px 75px 45px;
+    background: #f7f7f7;
+    background: -webkit-linear-gradient(to right, #f7f7f7, #fff);
+    background: linear-gradient(to right, #f7f7f7, #fff);
+}
+.reg-wrap .login-form .form-grp input {
+    background: #fff;
+}

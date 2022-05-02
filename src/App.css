@@ -12,9 +12,27 @@ body {
   background: #ffffff;
   font-family: 'Nunito', sans-serif;
   overflow-x: hidden;
-  padding-top: 70px;
+
 }
 
+.btn-special{
+  border: medium none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  margin-bottom: 0;
+  padding: 21px 23px;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  white-space: nowrap;
+  background: #ff5400;
+}
 
 /*---------------------------------------
    TYPOGRAPHY              
@@ -112,10 +130,10 @@ input, button,
   transition: 0.5s;
 }
 
-a:hover, a:active, a:focus {
+/* a:hover, a:active, a:focus {
   color: #29ca8e;
   outline: none;
-}
+} */
 
 ::-webkit-scrollbar{
   width: 8px;
@@ -208,7 +226,6 @@ a:hover, a:active, a:focus {
 
 section {
   position: relative;
-  padding: 100px 0;
 }
 
 #team, 
@@ -1064,14 +1081,7 @@ footer .social-icon {
 .courses-thumb .lead strong,
 .team-info .lead strong { color: #29ca8e;}
 
-section,
-.section-background .item,
-.section-background .courses-thumb,
-.section-background .team-thumb,
-main > section:nth-child(even) .item,
-main > section:nth-child(even) .courses-thumb,
-main > section:nth-child(even) .team-thumb,
-main > section { background: #fff;  }
+
 
 section .item,
 section .courses-thumb,
