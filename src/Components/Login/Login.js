@@ -3,7 +3,7 @@ import './Login.css'
 const Login = () => {
     return (
         <>
-        <section class="breadcrumb-area breadcrumb-bg title-background">
+            <section class="breadcrumb-area breadcrumb-bg title-background">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -36,7 +36,8 @@ const Login = () => {
                                             <li><a href="#"><img src="img/icon/google.png" alt="" /></a></li>
                                             <li><a href="#"><img src="img/icon/twitter.png" alt="" /></a></li>
                                         </ul>
-                                        <button class="btn">Login</button>
+                                        <p>Dont Have a Account? </p>
+                                        <button class="btn-special">Login</button>
                                     </form>
                                 </div>
                             </div>
