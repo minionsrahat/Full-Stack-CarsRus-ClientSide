@@ -30,14 +30,9 @@ const Login = () => {
                                             <label for="password">Password <span>*</span></label>
                                             <input type="password" id="password" placeholder="*****" />
                                         </div>
-                                        <span class="or">Or</span>
-                                        <ul class="action">
-                                            <li>Continue with :</li>
-                                            <li><a href="#"><img src="img/icon/google.png" alt="" /></a></li>
-                                            <li><a href="#"><img src="img/icon/twitter.png" alt="" /></a></li>
-                                        </ul>
                                         <p>Dont Have a Account? </p>
                                         <button class="btn-special">Login</button>
+                                        
                                     </form>
                                 </div>
                             </div>
