@@ -1,7 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Product.css';
 
 const Product = (props) => {
-    const {name,des,img,price,fuel_Type,year,make,body,mileage,transmission,quantity,supplier_name}=props.product
+    const { _id, name, des, img, price, fuel_Type, year, make, body, mileage, transmission, quantity, supplier_name } = props.product;
+    const navigate = useNavigate();
+    const navigateToProductDetailspage = (id) => {
+        navigate(`productdetails/${id}`)
+    }
     return (
         <>
             <div class="col-md-4 col-sm-4">
@@ -27,27 +33,24 @@ const Product = (props) => {
 
                     <div class="courses-detail">
                         <h3>
-                           {name}
+                            {name}
                         </h3>
 
                         <p class="lead">
-                          
+
                             <strong>${price}</strong>
                         </p>
 
-                        <p>
-                            {mileage} km &nbsp;&nbsp;/&nbsp;&nbsp; {fuel_Type}
-                            &nbsp;&nbsp;/&nbsp;&nbsp; {year} &nbsp;&nbsp;/&nbsp;&nbsp;
-                            {transmission}
+                        <p className='product-des'>
+                            {des}
+                        </p>
+                        <p class="">
+                            <strong>Supplier:{supplier_name}</strong>
                         </p>
                     </div>
 
                     <div class="courses-info">
-                        <a
-                            href="car-details.html"
-                            class="section-btn btn btn-primary btn-block"
-                        >View More</a
-                        >
+                        <button onClick={() => navigateToProductDetailspage(_id)} class="section-btn btn btn-primary btn-block"> View More</button>
                     </div>
                 </div>
             </div>

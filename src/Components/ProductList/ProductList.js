@@ -3,7 +3,7 @@ import useProdcuts from '../Hooks/ProductData';
 import Product from '../Product/Product';
 
 const ProductList = () => {
-    const [product, setProduct]=useProdcuts(4);
+    const [product, setProduct]=useProdcuts(6);
     return (
         <>
             <section>
@@ -19,7 +19,7 @@ const ProductList = () => {
 
                         {product.map((product)=>{
 
-                            return <Product product={product}></Product>
+                            return <Product key={product._id} product={product}></Product>
 
                         })}
 
