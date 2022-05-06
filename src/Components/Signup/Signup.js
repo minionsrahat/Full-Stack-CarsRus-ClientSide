@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase';
 import GoogleButton from 'react-google-button'
@@ -130,6 +130,7 @@ const Signup = () => {
                                                 </div>
                                             </div>
                                         </div>
+                                        <p>Already Have a Account?<strong> <Link to="/login">Log In</Link></strong> </p>
                                         <button type='submit' className="btn-special mb-2">Sign Up</button>
                                         <hr />
                                         
