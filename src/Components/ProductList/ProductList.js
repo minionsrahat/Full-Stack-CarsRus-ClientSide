@@ -3,7 +3,7 @@ import useProdcuts from '../Hooks/ProductData';
 import Product from '../Product/Product';
 
 const ProductList = () => {
-    const [product, setProduct]=useProdcuts();
+    const [product, setProduct]=useProdcuts(4);
     return (
         <>
             <section>
