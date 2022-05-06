@@ -1,6 +1,61 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import './ProductsDetails.css'
 const ProductDetails = () => {
+    const [product,setProduct]=useState({});
+    const [quantity,setQuantity]=useState(0);
+    const [stock,setStock]=useState(1);
+    const {id}=useParams();
+    useEffect(()=>{
+        fetch(`http://localhost:5000/readSingleCarsData/${id}`)
+        .then(res=>res.json())
+        .then(data=> {
+            setProduct(data)
+            setQuantity(data.quantity)
+        });
+    },[])
+    const { _id, name, des, img, price, fuel_Type, year, make, body, mileage, transmission, supplier_name } = product;
+    
+
+    const deliverProduct=()=>{
+        fetch(`http://localhost:5000/deliverCarData/${id}`, {
+            method: "PUT",
+            headers: { 'Content-Type': 'application/json',
+            // accesstoken:`${email} ${token}`},
+            }}).then(res => res.json())
+            .then(({ acknowledged, modifiedCount }) => {
+                if (acknowledged && modifiedCount == 1) {
+                    setQuantity(parseInt(quantity)-1)
+                }
+              })
+        
+    }
+    const handleInputStock=(e)=>{
+        if(parseInt(e.target.value)>0)
+        {
+            setStock(e.target.value)
+        }
+          
+    }
+
+    const handleFormsubmit=(e)=>{
+        e.preventDefault()
+        fetch("http://localhost:5000/updateStock", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            // accesstoken:`${email} ${token}`},
+            body: JSON.stringify({_id,stock:parseInt(stock)})
+            }).then(res => res.json())
+            .then(({ acknowledged, modifiedCount }) => {
+                if (acknowledged && modifiedCount == 1) {
+                    setQuantity(parseInt(quantity)+parseInt(stock))
+                    setStock(1)
+                }
+            })
+    }
+
+
+
     return (
         <>
             <section class="inventory-details-area gray-lite-bg p-2 mt-5">
@@ -11,21 +66,18 @@ const ProductDetails = () => {
                                 <div class="inv-details-title">
                                     <h5>Description</h5>
                                 </div>
-                                <p><span>Aouda was anxious</span> though she said nothing. As for Passepartout thought Mr. Fogg’s manovre simply glorious. The captain
-                                    had said “betwen eleven and twve knots,” and the Henrietta said the confirmed his she said nothing prediction. There are
-                                    many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by
-                                    injected.</p>
+                                <p>{des}</p>
                                 <div class="inv-details-img">
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <img src="img/images/inv_details_img01.jpg" alt="" />
+                                            <img src={img} alt="" />
                                         </div>
                                         <div class="col-sm-6">
-                                            <img src="img/images/inv_details_img02.jpg" alt="" />
+                                            <img src={img} alt="" />
                                         </div>
                                  </div>
                                 </div>
-                                <div class="inv-details-list">
+                                <div class="">
                                     <ul>
                                         <li>Sapien auctor tortoris vulputate sapien ?</li>
                                         <li>Curabitr lacus vitae tellus lacinia pretium vulputate ?</li>
@@ -42,21 +94,21 @@ const ProductDetails = () => {
                                     <div class="col-md-3 col-sm-4">
                                         <div class="inventory-features-item">
                                             <h6>Body Type :</h6>
-                                            <span>Coupe</span>
+                                            <span>{body}</span>
                                         </div>
                                         <div class="inventory-features-item">
                                             <h6>Make :</h6>
-                                            <span>BMW</span>
+                                            <span>{make}</span>
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-sm-4">
                                         <div class="inventory-features-item">
                                             <h6>Transmission :</h6>
-                                            <span>Automatic</span>
+                                            <span>{transmission}</span>
                                         </div>
                                         <div class="inventory-features-item">
                                             <h6>Year :</h6>
-                                            <span>2020</span>
+                                            <span>{year}</span>
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-sm-4">
@@ -66,17 +118,17 @@ const ProductDetails = () => {
                                         </div>
                                         <div class="inventory-features-item">
                                             <h6>Fuel Type :</h6>
-                                            <span>Petrol</span>
+                                            <span>{fuel_Type}</span>
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-sm-4">
                                         <div class="inventory-features-item">
-                                            <h6>Drive Type :</h6>
-                                            <span>Front Wheel Drive</span>
+                                            <h6>Quantity</h6>
+                                            <span>{quantity}</span>
                                         </div>
                                         <div class="inventory-features-item">
-                                            <h6>Doors :</h6>
-                                            <span>5-door</span>
+                                            <h6>Price :</h6>
+                                            <span>${price}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -101,23 +153,24 @@ const ProductDetails = () => {
                                     <div class="inv-widget-title mb-25">
                                         <h5 class="title">Deliver This Car</h5>
                                     </div>
-                                    <form action="#" class="sidebar-find-car">
-                                     <div>
-                                     <button className='btn'>Deliver</button>
+                                    <div class="inv-widget-title mb-25">
+                                        <h5 class="title">Total Quantity: {quantity}</h5>
+                                    </div>
+                                  
+                                     <div  class="sidebar-find-car">
+                                     <button className='btn' onClick={deliverProduct}>Deliver One</button>
                                      </div>
 
-                                        {/* <button class="btn">Find New Vehicles</button> */}
-                                    </form>
+                                   
                                 </div>
 
                                 <div class="widget inventory-widget">
                                     <div class="inv-widget-title mb-25">
                                         <h5 class="title">Restock the Cars</h5>
                                     </div>
-                                    <form action="#" class="sidebar-find-car">
+                                    <form action="#" onSubmit={handleFormsubmit} class="sidebar-find-car">
                                         <div class="form-grp search-box">
-                                            <input type="number" />
-                                            
+                                            <input  onChange={handleInputStock} placeholder='Enter Stock' value={stock} type="number" />
                                         </div>
                                      <div>
                                      <button className='btn'>Update Stock</button>

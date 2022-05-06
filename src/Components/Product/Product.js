@@ -4,9 +4,9 @@ import './Product.css';
 
 const Product = (props) => {
     const { _id, name, des, img, price, fuel_Type, year, make, body, mileage, transmission, quantity, supplier_name } = props.product;
-    const navigate = useNavigate();
+    const navigate = useNavigate('');
     const navigateToProductDetailspage = (id) => {
-        navigate(`productdetails/${id}`)
+        navigate(`/productdetails/${id}`)
     }
     return (
         <>
