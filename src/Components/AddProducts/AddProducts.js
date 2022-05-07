@@ -20,9 +20,9 @@ const AddProducts = () => {
 
     const [user, loading] = useAuthState(auth);
     const email = user?.email
-    const token = localStorage.getItem('accessToken')
-
+    
     const handleFormsubmit = (e) => {
+        const token = localStorage.getItem('accessToken')
         const newCar={
             name:name.current.value,
             des:des.current.value,
@@ -90,8 +90,7 @@ const AddProducts = () => {
                                         <input type="text" required ref={des} placeholder="Description" />
                                     </div>
                                     <div class="form-grp search-box">
-                                        <input type="text" required ref={img} placeholder="Image Url" />
-                                        
+                                        <input type="text" required ref={img} placeholder="Image Url" />     
                                     </div>
                                     <div class="row">
                                         <div class="col-6">

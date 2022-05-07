@@ -14,12 +14,12 @@ const ManageInventory = () => {
 
     const [user, loading] = useAuthState(auth);
     const email = user?.email
-    const token = localStorage.getItem('accessToken')
 
     const navigateToProductDetailsPage = (id) => {
         navigate(`/productdetails/${id}`)
     }
     const deleteCar = async (id) => {
+        const token = localStorage.getItem('accessToken')
         let isExecuted = window.confirm("Are you sure to delete this car data");
         if (isExecuted) {
             fetch(`http://localhost:5000/deleteCarData/${id}`, {

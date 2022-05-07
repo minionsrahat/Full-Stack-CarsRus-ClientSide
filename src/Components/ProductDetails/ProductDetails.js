@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate, useParams } from 'react-router-dom';
+import auth from '../../firebase';
 import './ProductsDetails.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const ProductDetails = () => {
     const [product,setProduct]=useState({});
     const [quantity,setQuantity]=useState(0);
     const [stock,setStock]=useState(1);
     const {id}=useParams();
+    const navigate=useNavigate();
+
+    const [user, loading] = useAuthState(auth);
+    const email = user?.email
+   
+
     useEffect(()=>{
         fetch(`http://localhost:5000/readSingleCarsData/${id}`)
         .then(res=>res.json())
@@ -18,14 +29,20 @@ const ProductDetails = () => {
     
 
     const deliverProduct=()=>{
+        const token = localStorage.getItem('accessToken')
         fetch(`http://localhost:5000/deliverCarData/${id}`, {
             method: "PUT",
             headers: { 'Content-Type': 'application/json',
-            // accesstoken:`${email} ${token}`},
-            }}).then(res => res.json())
-            .then(({ acknowledged, modifiedCount }) => {
+            accesstoken:`${email} ${token}`}
+             }).then(res => res.json())
+            .then((data) => {
+                const { acknowledged, modifiedCount }=data
                 if (acknowledged && modifiedCount == 1) {
                     setQuantity(parseInt(quantity)-1)
+                    toast("Product Delivered Successfully")
+                }
+                else{
+                    toast("Sorry Unexpected Error Occured or Unauthorize access")
                 }
               })
         
@@ -39,17 +56,26 @@ const ProductDetails = () => {
     }
 
     const handleFormsubmit=(e)=>{
+        const token = localStorage.getItem('accessToken')
         e.preventDefault()
         fetch("http://localhost:5000/updateStock", {
             method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            // accesstoken:`${email} ${token}`},
+            headers: { 'Content-Type': 'application/json',
+            accesstoken:`${email} ${token}`
+                },
+          
             body: JSON.stringify({_id,stock:parseInt(stock)})
             }).then(res => res.json())
-            .then(({ acknowledged, modifiedCount }) => {
+            .then((data) => {
+                const { acknowledged, modifiedCount }=data
                 if (acknowledged && modifiedCount == 1) {
                     setQuantity(parseInt(quantity)+parseInt(stock))
                     setStock(1)
+                    toast("New Quantity Added Successfully")
+                }
+                else
+                {
+                    toast("Sorry Unexpected Error Occured or Unauthorize access")
                 }
             })
     }
@@ -133,7 +159,18 @@ const ProductDetails = () => {
                                     </div>
                                 </div>
                             </div>
-                         
+
+                            <ToastContainer
+                                position="top-right"
+                                autoClose={5000}
+                                hideProgressBar={false}
+                                newestOnTop={false}
+                                closeOnClick
+                                rtl={false}
+                                pauseOnFocusLoss
+                                draggable
+                                pauseOnHover
+                            />                         
 
                         </div>
                         <div class="col-lg-4">
@@ -144,7 +181,7 @@ const ProductDetails = () => {
                                     </div>
                                     <form action="#" class="sidebar-find-car">
                                      <div>
-                                     <button className='btn'>Manage</button>
+                                     <button className='btn' onClick={()=>navigate('/manageproducts')}>Manage</button>
                                      </div>                                      
                                     </form>
                                 </div>

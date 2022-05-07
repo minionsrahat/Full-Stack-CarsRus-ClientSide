@@ -18,7 +18,9 @@ const MyProducts = () => {
     const navigateToProductDetailsPage=(id)=>{
         navigate(`/productdetails/${id}`)
     }
+
     const deleteCar = async (id) => {
+        const token = localStorage.getItem('accessToken')
         let isExecuted = window.confirm("Are you sure to delete this car data");
 
         if(isExecuted)
@@ -26,9 +28,8 @@ const MyProducts = () => {
             fetch(`http://localhost:5000/deleteCarData/${id}`, {
                 method: "DELETE",
                 headers:{
-                  // accesstoken:`${email} ${token}`
+                  accesstoken:`${email} ${token}`
                 }
-          
               })
                 .then(res => res.json())
                 .then(({ acknowledged, deletedCount }) => {
@@ -43,10 +44,9 @@ const MyProducts = () => {
                   }
                 })
         }
-       
-    
-    
       }
+
+      
     return (
         <div class="container my-5">
         <div class="row my-5">

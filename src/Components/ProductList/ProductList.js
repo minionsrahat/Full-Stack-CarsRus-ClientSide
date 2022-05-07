@@ -7,12 +7,12 @@ const ProductList = () => {
     return (
         <>
             <section>
-                <div class="container">
-                    <div class="row">
+                <div class="container mt-3">
+                    <div class="row my-3">
                         <div class="col-md-12 col-sm-12">
                             <div class="section-title text-center">
                                 <h2>
-                                    Featured Cars <small>Lorem ipsum dolor sit amet.</small>
+                                    Featured Cars
                                 </h2>
                             </div>
                         </div>
