@@ -48,11 +48,12 @@ const MyProducts = () => {
     
       }
     return (
-        <div class="container mt-5">
-        <div class="row mt-5">
+        <div class="container my-5">
+        <div class="row my-5">
             <div class="col-md-12 mx-auto p-2">
              <div className='table-responsive'>
-             <table class="table table-hover table-bordered  text-center">
+                 {product.length>0?<>
+                    <table class="table table-hover table-bordered  text-center">
                     <thead>
                         <tr>
                             <th>Image</th>
@@ -82,10 +83,12 @@ const MyProducts = () => {
 
                             })
                         }
-
-
                     </tbody>
                 </table>
+                 </>:<>
+                   <h3 className='text-center my-5'>Sorry Your Inventory is Empty</h3>
+                 </>}
+             
              </div>
 
             </div>

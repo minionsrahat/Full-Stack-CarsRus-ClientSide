@@ -1,4 +1,9 @@
 import React, { useRef } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
+import auth from '../../firebase';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddProducts = () => {
     const name=useRef('');
@@ -13,6 +18,10 @@ const AddProducts = () => {
     const transmission=useRef('');
     const quantity=useRef(1);
 
+    const [user, loading] = useAuthState(auth);
+    const email = user?.email
+    const token = localStorage.getItem('accessToken')
+
     const handleFormsubmit = (e) => {
         const newCar={
             name:name.current.value,
@@ -26,20 +35,26 @@ const AddProducts = () => {
             body:body.current.value,
             transmission:transmission.current.value,
             quantity:quantity.current.value,
-            supplier_name:'rahat'
+            supplier_name:email
         }
         e.preventDefault();
         fetch("http://localhost:5000/addCarsData", {
             method: "POST",
-            headers: { 'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json',
+            accesstoken: `${email} ${token}`
+        },
             body: JSON.stringify(newCar)
            }).then(res => res.json())
-            .then(({ acknowledged, insertedId }) => {
+            .then((data) => {
+                const { acknowledged, insertedId }=data;
+                const {error}=data
+
               if (acknowledged) {
-                alert("Success")
+              e.reset();
+              toast("Added SuccessFully!!")
               }
               else{
-                alert("Error")
+                toast("Unexpected Error Occured!! Please Fill Up form carefully")
             }
             })
        
@@ -48,6 +63,17 @@ const AddProducts = () => {
         <>
             <div class="container mt-5">
                 <div class="row mt-5">
+                <ToastContainer
+                                position="top-right"
+                                autoClose={5000}
+                                hideProgressBar={false}
+                                newestOnTop={false}
+                                closeOnClick
+                                rtl={false}
+                                pauseOnFocusLoss
+                                draggable
+                                pauseOnHover
+                            />
                     <div class="col-md-8 mx-auto">
                         <div class="inventory-sidebar">
                             <div class="widget inventory-widget">
@@ -57,7 +83,7 @@ const AddProducts = () => {
                                 <form action="#"onSubmit={handleFormsubmit} class="sidebar-find-car">
                                     <div class="form-grp search-box">
                                         <input required ref={name} type="text" placeholder="Name" />
-                                        <button><i class="fas fa-search"></i></button>
+                                        
                                     </div>
                                     <div class="form-grp">
                                         <i class="flaticon-placeholder-1"></i>
@@ -65,7 +91,7 @@ const AddProducts = () => {
                                     </div>
                                     <div class="form-grp search-box">
                                         <input type="text" required ref={img} placeholder="Image Url" />
-                                        <button><i class="fas fa-search"></i></button>
+                                        
                                     </div>
                                     <div class="row">
                                         <div class="col-6">
