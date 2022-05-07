@@ -132,6 +132,14 @@ const Signup = () => {
                                         </div>
                                         <p>Already Have a Account?<strong> <Link to="/login">Log In</Link></strong> </p>
                                         <button type='submit' className="btn-special mb-2">Sign Up</button>
+                                        {hookerror ? <>
+                                            <div className="text-center my-2">
+                                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                    <strong>{hookerror.message}</strong>
+                                                </div>
+                                            </div>
+                                        </> : ''}
                                         <hr />
                                         
                                         <div className="text-center d-flex align-items-center flex-column">

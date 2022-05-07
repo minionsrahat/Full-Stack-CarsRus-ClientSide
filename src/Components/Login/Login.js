@@ -50,7 +50,7 @@ const Login = () => {
     }
     const handleFormsubmit = (e) => {
         e.preventDefault();
-        signInWithEmailAndPassword(mail,password)
+        signInWithEmailAndPassword(mail, password)
     }
 
     const handleGoogleButton = () => {
@@ -72,7 +72,7 @@ const Login = () => {
     // }
     return (
         <>
-         <section class="breadcrumb-area breadcrumb-bg title-background">
+            <section class="breadcrumb-area breadcrumb-bg title-background">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -82,7 +82,7 @@ const Login = () => {
                         </div>
                     </div>
                 </div>
-         </section>
+            </section>
             <section class="login-register-area gray-lite pb-120">
                 <div class="container">
                     <div class="login-reg-wrap">
@@ -93,7 +93,7 @@ const Login = () => {
                                     <form action="#" onSubmit={handleFormsubmit} class="login-form">
                                         <div class="form-grp">
                                             <label for="username">Email or Username <span>*</span></label>
-                                            <input type="text"onBlur={handleUserMail} required id="username" placeholder="Jon Deo" />
+                                            <input type="text" onBlur={handleUserMail} required id="username" placeholder="Jon Deo" />
                                         </div>
                                         <div class="form-grp">
                                             <label for="password">Password <span>*</span></label>
@@ -101,18 +101,27 @@ const Login = () => {
                                         </div>
                                         <p>Dont Have a Account?<strong> <Link to="/signup">Sign Up</Link></strong> </p>
                                         <button class="btn-special">Login</button>
+                                        {hookerror ? <>
+                                            <div className="text-center my-2">
+                                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                    <strong>{hookerror.message}</strong>
+                                                </div>
+                                            </div>
+                                        </> : ''}
 
                                         <hr />
                                         <div className="text-center d-flex align-items-center flex-column">
-                                        <h5>Or Continue with :</h5>
-                                        <GoogleButton
-                                            onClick={handleGoogleButton} className="mb-3"/>
-                                        <GithubButton className="mb-3" onClick={handleGithubButton}></GithubButton>
+                                            <h5>Or Continue with :</h5>
+                                            <GoogleButton
+                                                onClick={handleGoogleButton} className="mb-3" />
+                                            <GithubButton className="mb-3" onClick={handleGithubButton}></GithubButton>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </section>

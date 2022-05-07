@@ -7,6 +7,7 @@ import Signup from './Components/Signup/Signup';
 import Footer from './Components/Footer/Footer';
 import ProductDetails from './Components/ProductDetails/ProductDetails';
 import AddProducts from './Components/AddProducts/AddProducts';
+import ManageInventory from './Components/ManageInventory/ManageInventory';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/productdetails/:id' element={<ProductDetails></ProductDetails>}></Route>
         <Route path='/addproducts' element={<AddProducts></AddProducts>}></Route>
+        <Route path='/manageproducts' element={<ManageInventory></ManageInventory>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
       </Routes>

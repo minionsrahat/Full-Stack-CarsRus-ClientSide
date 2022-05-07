@@ -1,0 +1,17 @@
+.table-img img{
+    width: 200px;
+}
+.action-btn-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.action-btn-group button{
+    padding: 8px 18px;
+    width: 100px;
+    background-color: #0d6efd;
+    border-radius: 5px;
+    font-size: 18px;
+    color: white;
+}

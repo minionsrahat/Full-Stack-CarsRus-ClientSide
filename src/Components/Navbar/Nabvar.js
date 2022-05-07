@@ -63,6 +63,7 @@ const Nabvar = () => {
                                     <NavLink to='/about' className="nav-item nav-link">About Us</NavLink>
                                     <NavLink to='/contact' className="nav-item nav-link">Contact</NavLink>
                                     <NavLink to='/addproducts' className="nav-item nav-link">Add Products</NavLink>
+                                    <NavLink to='/manageproducts' className="nav-item nav-link">Manage Products</NavLink>
                                 </div>
                                 <div className='p-3'>
                                     {user ? <><button type="button" onClick={logout} className="btn-special me-2">Sign Out</button></> :
