@@ -8,6 +8,9 @@ import Footer from './Components/Footer/Footer';
 import ProductDetails from './Components/ProductDetails/ProductDetails';
 import AddProducts from './Components/AddProducts/AddProducts';
 import ManageInventory from './Components/ManageInventory/ManageInventory';
+import Spinner from './Components/Spinner/Spinner';
+import RequireAuth from './Components/RequireAuth/RequireAuth';
+import MyProducts from './Components/MyProducts/MyProducts';
 
 function App() {
   return (
@@ -16,9 +19,32 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
-        <Route path='/productdetails/:id' element={<ProductDetails></ProductDetails>}></Route>
-        <Route path='/addproducts' element={<AddProducts></AddProducts>}></Route>
-        <Route path='/manageproducts' element={<ManageInventory></ManageInventory>}></Route>
+
+        <Route path='/productdetails/:id' element={
+          <RequireAuth>
+            <ProductDetails></ProductDetails>
+          </RequireAuth>
+        }></Route>
+
+        <Route path='/addproducts' element={
+          <RequireAuth>
+            <AddProducts></AddProducts>
+          </RequireAuth>
+        }></Route>
+
+
+        <Route path='/manageproducts' element={
+          <RequireAuth>
+            <ManageInventory></ManageInventory>
+          </RequireAuth>
+        }></Route>
+
+        <Route path='/myproducts' element={
+          <RequireAuth>
+           <MyProducts></MyProducts>
+          </RequireAuth>
+        }></Route>
+
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
       </Routes>

@@ -1,4 +1,5 @@
 import React from 'react';
+// import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import useProdcuts from '../Hooks/ProductData';
 import './ManageInventory.css'
@@ -6,14 +7,10 @@ import './ManageInventory.css'
 const ManageInventory = () => {
     const [product, setProduct] = useProdcuts();
     const navigate=useNavigate();
-
+    
     const navigateToProductDetailsPage=(id)=>{
         navigate(`/productdetails/${id}`)
     }
-
-
-
-
     const deleteCar = async (id) => {
         let isExecuted = window.confirm("Are you sure to delete this car data");
 

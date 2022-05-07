@@ -4,26 +4,23 @@ import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGithub, u
 import auth from '../../firebase';
 import GoogleButton from 'react-google-button'
 import GithubButton from 'react-github-login-button'
+import Spinner from '../Spinner/Spinner';
 
 const Signup = () => {
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
     const [cpass, setConfirmPassword] = useState('');
-    const [user, loading] = useAuthState(auth);
+    const [user] = useAuthState(auth);
     // const [error, setError] = useState('');
     const navigate = useNavigate();
     const [
-        createUserWithEmailAndPassword,
-        hookerror] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+        createUserWithEmailAndPassword,loading, hookerror] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-    const [signInWithGithub, githubuser, githuberror] = useSignInWithGithub(auth);
-
+    const [signInWithGithub, githubuser,githubloading, githuberror] = useSignInWithGithub(auth);
     const [signInWithGoogle, googleUser, googleloading, googleerror] = useSignInWithGoogle(auth);
     const location=useLocation();
     const from=location.state?.from?.pathname || '/';
-    
     useEffect(() => {
-        console.log(user?.email);
         if (user) {
         
             fetch('http://localhost:5000/login',{
@@ -46,20 +43,13 @@ const Signup = () => {
         }
     }, [user])
 
-    // useEffect(() => {
-    //     console.log(googleUser);
-    //     if (googleUser) {
-    //         navigate(from);
-    //     }
-    // }, [googleUser])
 
-    // useEffect(() => {
-    //     console.log(githubuser);
-    //     if (githubuser) {
-    //         navigate(from);
-    //     }
-    // }, [githubuser])
+    // if(loading||googleloading||githubloading)
+    // {
+    //     return <Spinner></Spinner>
+    // }
 
+    
 
     const handleUserMail = (e) => {
         setMail(e.target.value);

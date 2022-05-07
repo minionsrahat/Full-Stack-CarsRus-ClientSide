@@ -1,15 +1,28 @@
 import React from 'react';
-
+import './Spinner.css'
 const Spinner = () => {
     return (
-        <div className="container mt-5">
-            <div className="row">
-                <div className="col-5 mx-auto"><div className="spinner-border text-danger text-center p-5" role="status">
-                <span className="visually-hidden">Loading...</span>
-            </div></div>
+        <>
+            <div class="preloader">
+                <div class="meter">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="subline"></div>
+                    <div class="subline"></div>
+                    <div class="subline"></div>
+                    <div class="subline"></div>
+                    <div class="subline"></div>
+                    <div class="loader-circle-1">
+                        <div class="loader-circle-2"></div>
+                    </div>
+                    <span class="loadtext">Loading</span>
+                </div>
             </div>
-            
-        </div>
+        </>
 
     );
 };

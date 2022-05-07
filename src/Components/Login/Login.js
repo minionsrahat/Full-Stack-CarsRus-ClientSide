@@ -1,46 +1,48 @@
 import React, { useEffect, useState } from 'react';
 import './Login.css'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import GoogleButton from 'react-google-button'
 import GithubButton from 'react-github-login-button'
 import auth from '../../firebase';
 const Login = () => {
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
-
     const navigate = useNavigate();
     const [
         signInWithEmailAndPassword,
-        user,
-        loading,
         hookerror,
     ] = useSignInWithEmailAndPassword(auth);
-
+    const [user, loading] = useAuthState(auth);
     const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
     const [signInWithGoogle, googleUser, googleloading, googleerror] = useSignInWithGoogle(auth);
     const [signInWithGithub, githubuser, githuberror] = useSignInWithGithub(auth);
 
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
+  
     useEffect(() => {
         if (user) {
-            navigate(from);
+        
+            fetch('http://localhost:5000/login',{
+                method:'POST',
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body:JSON.stringify({email:user?.email})
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                const {token}=data
+                if(token){
+                    localStorage.setItem('accessToken',token)
+                    console.log(token);
+                    navigate(from, { replace: true })
+
+                }
+            })
         }
     }, [user])
-
-    useEffect(() => {
-        if (googleUser) {
-            navigate(from);
-        }
-    }, [googleUser])
-
-    useEffect(() => {
-        if (githubuser) {
-            navigate(from);
-        }
-    }, [githubuser])
-
 
     const handleUserMail = (e) => {
         setMail(e.target.value);
@@ -60,7 +62,6 @@ const Login = () => {
         signInWithGithub();
         console.log(githubuser);
     }
-
     // const handleResetPassword = async () => {
     //     if (!mail) {
     //         toast("Oops!! you forgot to enter your mail!");

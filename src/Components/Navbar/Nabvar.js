@@ -15,6 +15,7 @@ const Nabvar = () => {
     }
     const logout = () => {
         signOut(auth);
+        localStorage.removeItem("accessToken");
       };
       
     return (
@@ -57,13 +58,17 @@ const Nabvar = () => {
                             </button>
                             <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                                 <div className="navbar-nav mr-auto py-2">
-                                    <NavLink to='/' className="nav-item nav-link">HOME</NavLink>
-                                    <NavLink to='/inventory' className="nav-item nav-link">Inventory</NavLink>
+                                    <NavLink to='/' className="nav-item nav-link">Home</NavLink>
+                                    {user&&<>
+                                    <NavLink to='/addproducts' className="nav-item nav-link">Add Products</NavLink>
+                                    <NavLink to='/myproducts' className="nav-item nav-link">My Products</NavLink>
+                                    <NavLink to='/manageproducts' className="nav-item nav-link">Manage Products</NavLink>
+                                    <NavLink to='/inventory' className="nav-item nav-link">Car Gallery</NavLink>
+                                    </>}
                                     <NavLink to='/blogs' className="nav-item nav-link">Blogs</NavLink>
                                     <NavLink to='/about' className="nav-item nav-link">About Us</NavLink>
                                     <NavLink to='/contact' className="nav-item nav-link">Contact</NavLink>
-                                    <NavLink to='/addproducts' className="nav-item nav-link">Add Products</NavLink>
-                                    <NavLink to='/manageproducts' className="nav-item nav-link">Manage Products</NavLink>
+                                  
                                 </div>
                                 <div className='p-3'>
                                     {user ? <><button type="button" onClick={logout} className="btn-special me-2">Sign Out</button></> :
