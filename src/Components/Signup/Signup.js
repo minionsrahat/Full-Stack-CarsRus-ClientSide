@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase';
 import GoogleButton from 'react-google-button'
 import GithubButton from 'react-github-login-button'
@@ -9,12 +9,11 @@ const Signup = () => {
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
     const [cpass, setConfirmPassword] = useState('');
+    const [user, loading] = useAuthState(auth);
     // const [error, setError] = useState('');
     const navigate = useNavigate();
     const [
         createUserWithEmailAndPassword,
-        user,
-        loading,
         hookerror] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
     const [signInWithGithub, githubuser, githuberror] = useSignInWithGithub(auth);
@@ -22,24 +21,44 @@ const Signup = () => {
     const [signInWithGoogle, googleUser, googleloading, googleerror] = useSignInWithGoogle(auth);
     const location=useLocation();
     const from=location.state?.from?.pathname || '/';
-
+    
     useEffect(() => {
+        console.log(user?.email);
         if (user) {
-            navigate(from);
+        
+            fetch('http://localhost:5000/login',{
+                method:'POST',
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body:JSON.stringify({email:user?.email})
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                const {token}=data
+                if(token){
+                    localStorage.setItem('accessToken',token)
+                    console.log(token);
+                    navigate(from, { replace: true })
+
+                }
+            })
         }
     }, [user])
 
-    useEffect(() => {
-        if (googleUser) {
-            navigate(from);
-        }
-    }, [googleUser])
+    // useEffect(() => {
+    //     console.log(googleUser);
+    //     if (googleUser) {
+    //         navigate(from);
+    //     }
+    // }, [googleUser])
 
-    useEffect(() => {
-        if (githubuser) {
-            navigate(from);
-        }
-    }, [githubuser])
+    // useEffect(() => {
+    //     console.log(githubuser);
+    //     if (githubuser) {
+    //         navigate(from);
+    //     }
+    // }, [githubuser])
 
 
     const handleUserMail = (e) => {
