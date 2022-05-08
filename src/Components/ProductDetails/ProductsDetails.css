@@ -833,3 +833,8 @@
 .inventory-review-form {
     padding-bottom: 55px;
 }
+
+
+.description-list{
+    list-style-type: none;
+}

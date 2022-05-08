@@ -4,10 +4,10 @@ const useProdcuts=(limit)=>{
     const [product, setProduct]=useState([]);
     let url;
     if(limit){
-        url=`http://localhost:5000/readCarsData?limit=${limit}`
+        url=`https://murmuring-brook-11258.herokuapp.com/readCarsData?limit=${limit}`
     }
     else{
-        url=`http://localhost:5000/readCarsData`;
+        url=`https://murmuring-brook-11258.herokuapp.com/readCarsData`;
     }
     useEffect(()=>{
         fetch(url)

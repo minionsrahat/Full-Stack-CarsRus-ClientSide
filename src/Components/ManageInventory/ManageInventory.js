@@ -40,7 +40,7 @@ const ManageInventory = () => {
                         toast("Delete SuccessFull!!")
                     }
                     else if (error) {
-                       toast(error)
+                        toast(error)
                     }
                 })
         }
@@ -51,8 +51,19 @@ const ManageInventory = () => {
     return (
         <>
             <div class="container mt-5">
+                <div class="section-heading text-center">
+                    <h2>
+                        Manage Inventory
+                    </h2>
+                </div>
+                <div class="sidebar-find-car w-25 mx-auto my-2">
+                            <div>
+                                <button className='btn' onClick={() => navigate('/addproducts')}>Add New Car</button>
+                            </div>
+                        </div>
                 <div class="row mt-5">
                     <div class="col-md-12 mx-auto p-2">
+                       
                         <div className='table-responsive'>
                             <ToastContainer
                                 position="top-right"

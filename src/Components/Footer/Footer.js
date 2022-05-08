@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaEnvelope, FaPhone, FaFacebookF, FaTwitter, FaLinkedin, FaInstagramSquare } from 'react-icons/fa';
 
 const Footer = () => {
     return (
@@ -12,20 +13,20 @@ const Footer = () => {
                                     <h2>Headquarter</h2>
                                 </div>
                                 <address>
-                                    <p>212 Barrington Court <br />New York, ABC 10001</p>
+                                    <p>212 Halisohor <br />Chittagong, ABC 10001</p>
                                 </address>
 
-                                <ul class="social-icon">
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
+                                <ul class="social-icon text-white">
+                                    <li><FaFacebookF className='me-1'></FaFacebookF></li>
+                                    <li><FaInstagramSquare  className='me-1'></FaInstagramSquare></li>
+                                    <li><FaLinkedin  className='me-1'></FaLinkedin></li>
+                                    <li><FaInstagramSquare  className='me-1'></FaInstagramSquare></li>
                                 </ul>
 
-                                <div class="copyright-text">
-                                    <p>Copyright &copy; 2020 Company Name</p>
+                                <div class="copyright-text mt-2">
+                                    <p>Copyright &copy; 2020 Cars R Us!</p>
                                     <p>
-                                        Template by:
-                                        <a href="https://www.phpjabbers.com/">PHPJabbers.com</a>
+                                        Designed By    <strong>minionsRahat</strong>
                                     </p>
                                 </div>
                             </div>
@@ -39,17 +40,17 @@ const Footer = () => {
                                 <address>
                                     <p>+1 333 4040 5566</p>
                                     <p>
-                                        <a href="mailto:contact@company.com">contact@company.com</a>
+                                        <a href="mailto:contact@company.com">carsrus@gmail.com</a>
                                     </p>
                                 </address>
 
-                                <div class="footer_menu">
+                                <div class="footer_menu text-white">
                                     <h2>Quick Links</h2>
                                     <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="about-us.html">About Us</a></li>
-                                        <li><a href="terms.html">Terms & Conditions</a></li>
-                                        <li><a href="contact.html">Contact Us</a></li>
+                                        <li>Home</li>
+                                        <li>About Us</li>
+                                        <li>Terms & Conditions</li>
+                                        <li>Contact Us</li>
                                     </ul>
                                 </div>
                             </div>
@@ -58,15 +59,15 @@ const Footer = () => {
                         <div class="col-md-4 col-sm-12">
                             <div class="footer-info newsletter-form">
                                 <div class="section-title">
-                                    <h2>Newsletter Signup</h2>
+                                    <h2>Send Message</h2>
                                 </div>
                                 <div>
                                     <div class="form-group">
                                         <form action="#" method="get">
                                             <input
-                                                type="email"
+                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your email"
+                                                placeholder="Enter your Message"
                                                 name="email"
                                                 id="email"
                                                 required
@@ -79,9 +80,7 @@ const Footer = () => {
                                                 value="Send me"
                                             />
                                         </form>
-                                        <span
-                                        ><sup>*</sup> Please note - we do not spam your email.</span
-                                        >
+                                        <span><sup>*</sup> Please note -it will be a anonymous message.</span>
                                     </div>
                                 </div>
                             </div>

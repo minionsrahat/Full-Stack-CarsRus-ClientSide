@@ -92,6 +92,7 @@ const ProductDetails = () => {
                                 <div class="inv-details-title">
                                     <h5>Description</h5>
                                 </div>
+                                <h4>{name}</h4>
                                 <p>{des}</p>
                                 <div class="inv-details-img">
                                     <div class="row">
@@ -104,10 +105,11 @@ const ProductDetails = () => {
                                  </div>
                                 </div>
                                 <div class="">
-                                    <ul>
-                                        <li>Sapien auctor tortoris vulputate sapien ?</li>
-                                        <li>Curabitr lacus vitae tellus lacinia pretium vulputate ?</li>
-                                        <li>Tellus orci auctor augue mauris ?</li>
+                                
+                                    <ul className='description-list'>
+                                        <li><strong>Id: {_id}</strong></li>
+                                        <li><strong>Supplier name: {supplier_name}</strong></li>
+                                        <li><strong>Status: {quantity>0?'Stock Available':"Sold Out"}</strong></li>
                                     </ul>
                                 </div>
                                
@@ -179,11 +181,11 @@ const ProductDetails = () => {
                                     <div class="inv-widget-title mb-25">
                                         <h5 class="title">Manage Your Inventory</h5>
                                     </div>
-                                    <form action="#" class="sidebar-find-car">
+                                    <div class="sidebar-find-car">
                                      <div>
                                      <button className='btn' onClick={()=>navigate('/manageproducts')}>Manage</button>
                                      </div>                                      
-                                    </form>
+                                    </div>
                                 </div>
 
                                 <div class="widget inventory-widget mb-3">
@@ -195,9 +197,13 @@ const ProductDetails = () => {
                                     </div>
                                   
                                      <div  class="sidebar-find-car">
-                                     <button className='btn' onClick={deliverProduct}>Deliver One</button>
+                                        {quantity==0?<>
+                                            <button className='btn'disabled>Stock Out</button>
+                                        </>:<>
+                                        <button className='btn' onClick={deliverProduct}>Deliver One</button>
+                                        </>}
                                      </div>
-
+                                     
                                    
                                 </div>
 

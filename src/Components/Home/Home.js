@@ -8,11 +8,10 @@ import Team from '../Team/Team';
 const Home = () => {
     return (
         <>
-        {/* <Banner></Banner> */}
+        <Banner></Banner>
         <ProductList></ProductList>
         <FAQ></FAQ>
         <Team></Team>
-      
         </>
     );
 };

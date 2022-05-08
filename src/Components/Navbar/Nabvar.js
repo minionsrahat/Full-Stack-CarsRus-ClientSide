@@ -25,9 +25,9 @@ const Nabvar = () => {
             <div className="container-fluid bg-dark px-0">
                 <div className="row gx-0">
                     <div className="col-lg-3 bg-dark d-none d-lg-block">
-                        <a href="index.html" className="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
-                            <h1 className="m-0 text-primary text-uppercase">Cars R Us!</h1>
-                        </a>
+                        <div className="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                            <h1 className="m-0 navbar-title text-uppercase">Cars R Us!</h1>
+                        </div>
                     </div>
                     <div className="col-lg-9">
                         <div className="row gx-0 bg-white d-none d-lg-flex">
@@ -50,9 +50,9 @@ const Nabvar = () => {
                             </div>
                         </div>
                         <nav className="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
-                            <a href="index.html" className="navbar-brand d-block d-lg-none">
-                                <h1 className="m-0 text-primary text-uppercase">Cars R Us!</h1>
-                            </a>
+                            <div className="navbar-brand d-block d-lg-none">
+                                <h1 className="m-0 navbar-title text-uppercase">Cars R Us!</h1>
+                            </div>
                             <button type="button" className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
