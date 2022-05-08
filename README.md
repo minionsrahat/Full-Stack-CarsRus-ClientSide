@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+[https://stackoverflow.com/questions/72158797/how-to-display-a-spinner-when-data-is-loading-from-server-by-fetch-api-in-react](https://stackoverflow.com/questions/72158797/how-to-display-a-spinner-when-data-is-loading-from-server-by-fetch-api-in-react)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
