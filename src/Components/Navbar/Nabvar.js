@@ -4,10 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { NavLink, useNavigate } from 'react-router-dom';
 import auth from '../../firebase';
 import './Navbar.css'
-
 import { FaEnvelope, FaPhone, FaFacebookF, FaTwitter, FaLinkedin, FaInstagramSquare } from 'react-icons/fa';
-
-
 
 const Nabvar = () => {
     const [user, loading, error] = useAuthState(auth);
