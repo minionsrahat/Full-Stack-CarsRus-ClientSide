@@ -21,15 +21,7 @@ const ProductList = () => {
 
                             return <Product key={product._id} product={product}></Product>
 
-                        })}
-
-
-
-                     
-                       
-                       
-
-                    
+                        })}  
                     </div>
                 </div>
             </section>
