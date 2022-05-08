@@ -1,6 +1,7 @@
 import './App.css';
 import Nabvar from './Components/Navbar/Nabvar';
 import Login from './Components/Login/Login';
+import Notfound from './Components/NotFound/Notfound'
 import { Route, Routes } from 'react-router-dom';
 import Home from './Components/Home/Home';
 import Signup from './Components/Signup/Signup';
@@ -12,6 +13,7 @@ import Spinner from './Components/Spinner/Spinner';
 import RequireAuth from './Components/RequireAuth/RequireAuth';
 import MyProducts from './Components/MyProducts/MyProducts';
 import Blogs from './Components/Blogs/Blogs';
+import ContactUs from './Components/ContactUs/ContactUs';
 
 function App() {
   return (
@@ -48,8 +50,10 @@ function App() {
 
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/contactus' element={<ContactUs></ContactUs>}></Route>
 
         <Route path='/signup' element={<Signup></Signup>}></Route>
+        <Route path='*' element={<Notfound></Notfound>}></Route>
       </Routes>
       <Footer></Footer>
     </>

@@ -22,7 +22,7 @@ const ManageInventory = () => {
         const token = localStorage.getItem('accessToken')
         let isExecuted = window.confirm("Are you sure to delete this car data");
         if (isExecuted) {
-            fetch(`http://localhost:5000/deleteCarData/${id}`, {
+            fetch(`https://murmuring-brook-11258.herokuapp.com/deleteCarData/${id}`, {
                 method: "DELETE",
                 headers: {
                     accesstoken: `${email} ${token}`
@@ -50,19 +50,19 @@ const ManageInventory = () => {
     }
     return (
         <>
-            <div class="container mt-5">
-                <div class="section-heading text-center">
+            <div className="container mt-5">
+                <div className="section-heading text-center">
                     <h2>
                         Manage Inventory
                     </h2>
                 </div>
-                <div class="sidebar-find-car w-25 mx-auto my-2">
+                <div className="sidebar-find-car w-25 mx-auto my-2">
                             <div>
                                 <button className='btn' onClick={() => navigate('/addproducts')}>Add New Car</button>
                             </div>
                         </div>
-                <div class="row mt-5">
-                    <div class="col-md-12 mx-auto p-2">
+                <div className="row mt-5">
+                    <div className="col-md-12 mx-auto p-2">
                        
                         <div className='table-responsive'>
                             <ToastContainer
@@ -76,7 +76,7 @@ const ManageInventory = () => {
                                 draggable
                                 pauseOnHover
                             />
-                            <table class="table table-hover table-bordered  text-center">
+                            <table className="table table-hover table-bordered  text-center">
                                 <thead>
                                     <tr>
                                         <th>Image</th>

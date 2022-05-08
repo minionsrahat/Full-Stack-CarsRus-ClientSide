@@ -18,7 +18,7 @@ const ProductDetails = () => {
    
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/readSingleCarsData/${id}`)
+        fetch(`https://murmuring-brook-11258.herokuapp.com/readSingleCarsData/${id}`)
         .then(res=>res.json())
         .then(data=> {
             setProduct(data)
@@ -30,7 +30,7 @@ const ProductDetails = () => {
 
     const deliverProduct=()=>{
         const token = localStorage.getItem('accessToken')
-        fetch(`http://localhost:5000/deliverCarData/${id}`, {
+        fetch(`https://murmuring-brook-11258.herokuapp.com/deliverCarData/${id}`, {
             method: "PUT",
             headers: { 'Content-Type': 'application/json',
             accesstoken:`${email} ${token}`}
@@ -58,7 +58,7 @@ const ProductDetails = () => {
     const handleFormsubmit=(e)=>{
         const token = localStorage.getItem('accessToken')
         e.preventDefault()
-        fetch("http://localhost:5000/updateStock", {
+        fetch("https://murmuring-brook-11258.herokuapp.com/updateStock", {
             method: "POST",
             headers: { 'Content-Type': 'application/json',
             accesstoken:`${email} ${token}`
@@ -84,27 +84,27 @@ const ProductDetails = () => {
 
     return (
         <>
-            <section class="inventory-details-area gray-lite-bg p-2 mt-5">
-                <div class="container mt-4">
-                    <div class="row g-2">
-                        <div class="col-lg-8">
-                        <div class="inventory-details-description mb-3">
-                                <div class="inv-details-title">
+            <section className="inventory-details-area gray-lite-bg p-2 mt-5">
+                <div className="container mt-4">
+                    <div className="row g-2">
+                        <div className="col-lg-8">
+                        <div className="inventory-details-description mb-3">
+                                <div className="inv-details-title">
                                     <h5>Description</h5>
                                 </div>
                                 <h4>{name}</h4>
                                 <p>{des}</p>
-                                <div class="inv-details-img">
-                                    <div class="row">
-                                        <div class="col-sm-6">
+                                <div className="inv-details-img">
+                                    <div className="row">
+                                        <div className="col-sm-6">
                                             <img src={img} alt="" />
                                         </div>
-                                        <div class="col-sm-6">
+                                        <div className="col-sm-6">
                                             <img src={img} alt="" />
                                         </div>
                                  </div>
                                 </div>
-                                <div class="">
+                                <div className="">
                                 
                                     <ul className='description-list'>
                                         <li><strong>Id: {_id}</strong></li>
@@ -114,47 +114,47 @@ const ProductDetails = () => {
                                 </div>
                                
                             </div>
-                            <div class="inventory-features mb-3">
-                                <div class="inv-details-title">
+                            <div className="inventory-features mb-3">
+                                <div className="inv-details-title">
                                     <h5>Inventory Features</h5>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-4">
-                                        <div class="inventory-features-item">
+                                <div className="row">
+                                    <div className="col-md-3 col-sm-4">
+                                        <div className="inventory-features-item">
                                             <h6>Body Type :</h6>
                                             <span>{body}</span>
                                         </div>
-                                        <div class="inventory-features-item">
+                                        <div className="inventory-features-item">
                                             <h6>Make :</h6>
                                             <span>{make}</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 col-sm-4">
-                                        <div class="inventory-features-item">
+                                    <div className="col-md-3 col-sm-4">
+                                        <div className="inventory-features-item">
                                             <h6>Transmission :</h6>
                                             <span>{transmission}</span>
                                         </div>
-                                        <div class="inventory-features-item">
+                                        <div className="inventory-features-item">
                                             <h6>Year :</h6>
                                             <span>{year}</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 col-sm-4">
-                                        <div class="inventory-features-item">
+                                    <div className="col-md-3 col-sm-4">
+                                        <div className="inventory-features-item">
                                             <h6>Condition :</h6>
                                             <span>New</span>
                                         </div>
-                                        <div class="inventory-features-item">
+                                        <div className="inventory-features-item">
                                             <h6>Fuel Type :</h6>
                                             <span>{fuel_Type}</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 col-sm-4">
-                                        <div class="inventory-features-item">
+                                    <div className="col-md-3 col-sm-4">
+                                        <div className="inventory-features-item">
                                             <h6>Quantity</h6>
                                             <span>{quantity}</span>
                                         </div>
-                                        <div class="inventory-features-item">
+                                        <div className="inventory-features-item">
                                             <h6>Price :</h6>
                                             <span>${price}</span>
                                         </div>
@@ -175,28 +175,28 @@ const ProductDetails = () => {
                             />                         
 
                         </div>
-                        <div class="col-lg-4">
-                            <aside class="inventory-sidebar">
-                            <div class="widget inventory-widget mb-3">
-                                    <div class="inv-widget-title mb-25">
-                                        <h5 class="title">Manage Your Inventory</h5>
+                        <div className="col-lg-4">
+                            <aside className="inventory-sidebar">
+                            <div className="widget inventory-widget mb-3">
+                                    <div className="inv-widget-title mb-25">
+                                        <h5 className="title">Manage Your Inventory</h5>
                                     </div>
-                                    <div class="sidebar-find-car">
+                                    <div className="sidebar-find-car">
                                      <div>
                                      <button className='btn' onClick={()=>navigate('/manageproducts')}>Manage</button>
                                      </div>                                      
                                     </div>
                                 </div>
 
-                                <div class="widget inventory-widget mb-3">
-                                    <div class="inv-widget-title mb-25">
-                                        <h5 class="title">Deliver This Car</h5>
+                                <div className="widget inventory-widget mb-3">
+                                    <div className="inv-widget-title mb-25">
+                                        <h5 className="title">Deliver This Car</h5>
                                     </div>
-                                    <div class="inv-widget-title mb-25">
-                                        <h5 class="title">Total Quantity: {quantity}</h5>
+                                    <div className="inv-widget-title mb-25">
+                                        <h5 className="title">Total Quantity: {quantity}</h5>
                                     </div>
                                   
-                                     <div  class="sidebar-find-car">
+                                     <div  className="sidebar-find-car">
                                         {quantity==0?<>
                                             <button className='btn'disabled>Stock Out</button>
                                         </>:<>
@@ -207,12 +207,12 @@ const ProductDetails = () => {
                                    
                                 </div>
 
-                                <div class="widget inventory-widget">
-                                    <div class="inv-widget-title mb-25">
-                                        <h5 class="title">Restock the Cars</h5>
+                                <div className="widget inventory-widget">
+                                    <div className="inv-widget-title mb-25">
+                                        <h5 className="title">Restock the Cars</h5>
                                     </div>
-                                    <form action="#" onSubmit={handleFormsubmit} class="sidebar-find-car">
-                                        <div class="form-grp search-box">
+                                    <form action="#" onSubmit={handleFormsubmit} className="sidebar-find-car">
+                                        <div className="form-grp search-box">
                                             <input  onChange={handleInputStock} placeholder='Enter Stock' value={stock} type="number" />
                                         </div>
                                      <div>

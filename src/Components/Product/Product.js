@@ -14,29 +14,29 @@ const Product = (props) =>{
 
     return (
         <>
-         <div class="col-md-4 col-sm-4">
-                <div class="courses-thumb courses-thumb-secondary">
-                    <div class="courses-top">
-                        <div class="courses-image">
+         <div className="col-md-4 col-sm-4">
+                <div className="courses-thumb courses-thumb-secondary">
+                    <div className="courses-top">
+                        <div className="courses-image">
                             <img
                                 src={img}
-                                class="img-fluid"
+                                className="img-fluid"
                                 alt=""
                             />
                         </div>
-                        <div class="courses-date">
+                        <div className="courses-date">
                             <span title="Author"><BsSpeedometer className='me-1'></BsSpeedometer>{mileage}</span>
                             <span title="Author"><FaCube className='me-1'></FaCube>{fuel_Type}</span>
                             <span title="Views"><FaCog className='me-1'></FaCog>{body}</span>
                         </div>
                     </div>
 
-                    <div class="courses-detail">
+                    <div className="courses-detail">
                         <h3>
                             {name}
                         </h3>
 
-                        <p class="lead">
+                        <p className="lead">
 
                             <strong>${price}</strong>
                         </p>
@@ -44,13 +44,17 @@ const Product = (props) =>{
                         <p className='product-des'>
                             {des}
                         </p>
-                        <p class="">
+                        
+                        <p className='product-des'>
+                           Quantity: {quantity}
+                        </p>
+                        <p className="">
                             <strong>Supplier: {supplier_name}</strong>
                         </p>
                     </div>
 
-                    <div class="courses-info">
-                        <button onClick={() => navigateToProductDetailspage(_id)} class="section-btn btn btn-primary btn-block">Update Stock</button>
+                    <div className="courses-info">
+                        <button onClick={() => navigateToProductDetailspage(_id)} className="section-btn btn btn-primary btn-block">Update Stock</button>
                     </div>
                 </div>
             </div>

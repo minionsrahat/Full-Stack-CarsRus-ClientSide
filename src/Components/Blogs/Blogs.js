@@ -3,16 +3,16 @@ import React from 'react';
 const Blogs = () => {
     return (
         <>
-            <div class="container my-5">
-                <div class="row my-5 gy-5">
-                    <div class="col-md-10 mx-auto">
+            <div className="container my-5">
+                <div className="row my-5 gy-5">
+                    <div className="col-md-10 mx-auto">
                         <h3>1.When should you use nodejs and when should you use mongodb</h3>
                         <p>Any project necessitates the use of a programming environment and a runtime library that provide you with basic programming tools and support, as well as the ability to compile and/or read your source code. Nodejs is an example of a programming tool for the Javascript programming language. As a result, if you wish to develop some sort of stand-alone software or server in Javascript, you can do it with the help of nodejs.</p>
                         <p>
                             If your application requires the capacity to persistently store data in a way that allows you to efficiently query or update it later, you will most likely need to use some form of database. There are many of well-known databases to choose from. MongoDB is an example of such a database. Other databases include MariaDB, MySql, CouchDB, DynamoDB (on AWS), and Postgres, to name just a few. Distinct databases have different strengths (things they are greatest at) and other ways of being used, making it a completely different question to choose which database is the right/best for what you're doing in the first place.
                         </p>
                     </div>
-                    <div class="col-md-10 mx-auto">
+                    <div className="col-md-10 mx-auto">
                         <h3>2.Differences between sql and nosql databases.</h3>
                         <h5>SQL</h5>
                         <p>SQL databases are a type of system software that allows for the management, analysis, capture, and querying of structured data in a relational manner. SQL databases are also known as relational databases. A programming language that is used to interface with databases for the purposes of storing, deleting, updating, inserting, and retrieving data. Structured Query Languages (SQL) are supported by SQL databases.</p>
@@ -22,7 +22,7 @@ const Blogs = () => {
                             NoSQL databases are a type of software that enables for the storage and retrieval of structured, unstructured, and polymorphic data for a variety of applications using different types of data. A database management system that retrieves, stores, and manages the scalability of databases. In the absence of a declarative query language, NonSQL is the only option.                   </p>
                     </div>
 
-                    <div class="col-md-10 mx-auto">
+                    <div className="col-md-10 mx-auto">
                         <h3>3. What is the purpose of jwt and how does it work?</h3>
                         <p>JWT, or JSON Web Token, is an open standard that is used to securely communicate information between two parties — a client and a server — over the internet. Typically, it is a JSON file that has been encoded and contains claims as well as a signature. It's typically used in conjunction with other authentication systems such as OAuth and OpenID to communicate information about the user's identity.</p>
                         <p>

@@ -5,51 +5,52 @@ import auth from '../../firebase';
 import GoogleButton from 'react-google-button'
 import GithubButton from 'react-github-login-button'
 import Spinner from '../Spinner/Spinner';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
     const [cpass, setConfirmPassword] = useState('');
-    const [user] = useAuthState(auth);
+    const [user,loading] = useAuthState(auth);
     // const [error, setError] = useState('');
     const navigate = useNavigate();
     const [
-        createUserWithEmailAndPassword,loading, hookerror] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+        createUserWithEmailAndPassword, hookuser,hookloading,
+        hookerror] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-    const [signInWithGithub, githubuser,githubloading, githuberror] = useSignInWithGithub(auth);
+    const [signInWithGithub, githubuser, githubloading, githuberror] = useSignInWithGithub(auth);
     const [signInWithGoogle, googleUser, googleloading, googleerror] = useSignInWithGoogle(auth);
-    const location=useLocation();
-    const from=location.state?.from?.pathname || '/';
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     useEffect(() => {
         if (user) {
-        
-            fetch('http://localhost:5000/login',{
-                method:'POST',
-                headers:{
+
+            fetch('https://murmuring-brook-11258.herokuapp.com/login', {
+                method: 'POST',
+                headers: {
                     'Content-Type': 'application/json'
                 },
-                body:JSON.stringify({email:user?.email})
+                body: JSON.stringify({ email: user?.email })
             })
-            .then(res=>res.json())
-            .then(data=>{
-                const {token}=data
-                if(token){
-                    localStorage.setItem('accessToken',token)
-                    console.log(token);
-                    navigate(from, { replace: true })
+                .then(res => res.json())
+                .then(data => {
+                    const { token } = data
+                    if (token) {
+                        localStorage.setItem('accessToken', token)
+                        navigate(from, { replace: true })
 
-                }
-            })
+                    }
+                })
         }
     }, [user])
 
+    if(hookloading||googleloading||githubloading)
+    {
+        return <Spinner></Spinner>
+    }
 
-    // if(loading||googleloading||githubloading)
-    // {
-    //     return <Spinner></Spinner>
-    // }
 
-    
 
     const handleUserMail = (e) => {
         setMail(e.target.value);
@@ -63,10 +64,13 @@ const Signup = () => {
 
     const handleFormsubmit = (e) => {
         e.preventDefault();
-        console.log(mail, password);
+        // console.log(mail, password);
         if (password === cpass) {
-            console.log(password);
             createUserWithEmailAndPassword(mail, password)
+        }
+        else {
+            toast("Oops!! Your password and confirmed password didnt match.");
+
         }
     }
 
@@ -79,16 +83,7 @@ const Signup = () => {
         // console.log(githubuser);
     }
 
-    // const handleResetPassword=async ()=>{
-    //     if(!mail){
-    //         toast("Oops!! you forgot to enter your mail!");
-    //     }
-    //     else{
-    //         toast('Your reset password link sent to your mail!')
-    //         await sendPasswordResetEmail(mail);
-    //     }
-    // }
-
+   
 
     return (
         <>
@@ -105,7 +100,17 @@ const Signup = () => {
                 </div>
             </section>
             <section className="login-register-area gray-lite pb-120">
-
+                <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
                 <div className="container">
                     <div className="login-reg-wrap">
                         <div className="row no-gutters">
@@ -135,30 +140,30 @@ const Signup = () => {
                                             <div className="col-md-6">
                                                 <div className="form-grp">
                                                     <label for="password2">Confirm Password <span>*</span></label>
-                                                    <input onBlur={handleUserConfirmPassword} type="password" required id="password2" placeholder="*****" />
+                                                    <input onBlur={handleUserConfirmPassword} type="password" required id="password3" placeholder="*****" />
                                                 </div>
                                             </div>
                                         </div>
                                         <p>Already Have a Account?<strong> <Link to="/login">Log In</Link></strong> </p>
                                         <button type='submit' className="btn-special mb-2">Sign Up</button>
-                                        {hookerror ? <>
+                                        {hookerror || googleerror || githuberror ? <>
                                             <div className="text-center my-2">
-                                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                    <strong>{hookerror.message}</strong>
+                                                <div className="alert alert-danger alert-dismissible fade show" role="alert">
+                                                    <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                    <strong>{hookerror?.message}{googleerror?.message}{githuberror?.message}</strong>
                                                 </div>
                                             </div>
                                         </> : ''}
                                         <hr />
-                                        
+
                                         <div className="text-center d-flex align-items-center flex-column">
-                                        <h5>Or Continue with :</h5>
-                                        <GoogleButton
-                                            onClick={handleGoogleButton} className="mb-3"
-                                        />
-                                      <GithubButton className="mb-3" onClick={handleGithubButton}></GithubButton>
+                                            <h5>Or Continue with :</h5>
+                                            <GoogleButton
+                                                onClick={handleGoogleButton} className="mb-3"
+                                            />
+                                            <GithubButton className="mb-3" onClick={handleGithubButton}></GithubButton>
                                         </div>
-                                       
+
                                     </form>
                                 </div>
                             </div>

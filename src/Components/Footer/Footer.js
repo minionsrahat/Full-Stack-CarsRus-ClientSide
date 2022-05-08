@@ -5,25 +5,25 @@ const Footer = () => {
     return (
         <>
             <footer id="footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6">
-                            <div class="footer-info">
-                                <div class="section-title">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-4 col-sm-6">
+                            <div className="footer-info">
+                                <div className="section-title">
                                     <h2>Headquarter</h2>
                                 </div>
                                 <address>
                                     <p>212 Halisohor <br />Chittagong, ABC 10001</p>
                                 </address>
 
-                                <ul class="social-icon text-white">
+                                <ul className="social-icon text-white">
                                     <li><FaFacebookF className='me-1'></FaFacebookF></li>
                                     <li><FaInstagramSquare  className='me-1'></FaInstagramSquare></li>
                                     <li><FaLinkedin  className='me-1'></FaLinkedin></li>
                                     <li><FaInstagramSquare  className='me-1'></FaInstagramSquare></li>
                                 </ul>
 
-                                <div class="copyright-text mt-2">
+                                <div className="copyright-text mt-2">
                                     <p>Copyright &copy; 2020 Cars R Us!</p>
                                     <p>
                                         Designed By    <strong>minionsRahat</strong>
@@ -32,9 +32,9 @@ const Footer = () => {
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-sm-6">
-                            <div class="footer-info">
-                                <div class="section-title">
+                        <div className="col-md-4 col-sm-6">
+                            <div className="footer-info">
+                                <div className="section-title">
                                     <h2>Contact Info</h2>
                                 </div>
                                 <address>
@@ -44,7 +44,7 @@ const Footer = () => {
                                     </p>
                                 </address>
 
-                                <div class="footer_menu text-white">
+                                <div className="footer_menu text-white">
                                     <h2>Quick Links</h2>
                                     <ul>
                                         <li>Home</li>
@@ -56,17 +56,17 @@ const Footer = () => {
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-sm-12">
-                            <div class="footer-info newsletter-form">
-                                <div class="section-title">
+                        <div className="col-md-4 col-sm-12">
+                            <div className="footer-info newsletter-form">
+                                <div className="section-title">
                                     <h2>Send Message</h2>
                                 </div>
                                 <div>
-                                    <div class="form-group">
+                                    <div className="form-group">
                                         <form action="#" method="get">
                                             <input
                                                 type="text"
-                                                class="form-control"
+                                                className="form-control"
                                                 placeholder="Enter your Message"
                                                 name="email"
                                                 id="email"
@@ -74,7 +74,7 @@ const Footer = () => {
                                             />
                                             <input
                                                 type="submit"
-                                                class="form-control"
+                                                className="form-control"
                                                 name="submit"
                                                 id="form-submit"
                                                 value="Send me"

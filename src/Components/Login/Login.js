@@ -5,44 +5,53 @@ import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword,
 import GoogleButton from 'react-google-button'
 import GithubButton from 'react-github-login-button'
 import auth from '../../firebase';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Spinner from '../Spinner/Spinner';
 const Login = () => {
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const [
-        signInWithEmailAndPassword,
+        signInWithEmailAndPassword,hookuser,hookloading,
         hookerror,
     ] = useSignInWithEmailAndPassword(auth);
-    const [user, loading] = useAuthState(auth);
+    const [user] = useAuthState(auth);
     const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
     const [signInWithGoogle, googleUser, googleloading, googleerror] = useSignInWithGoogle(auth);
-    const [signInWithGithub, githubuser, githuberror] = useSignInWithGithub(auth);
+    const [signInWithGithub, githubuser,githubloading, githuberror] = useSignInWithGithub(auth);
 
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
-  
+
     useEffect(() => {
         if (user) {
-        
-            fetch('http://localhost:5000/login',{
-                method:'POST',
-                headers:{
+
+            fetch('https://murmuring-brook-11258.herokuapp.com/login', {
+                method: 'POST',
+                headers: {
                     'Content-Type': 'application/json'
                 },
-                body:JSON.stringify({email:user?.email})
+                body: JSON.stringify({ email: user?.email })
             })
-            .then(res=>res.json())
-            .then(data=>{
-                const {token}=data
-                if(token){
-                    localStorage.setItem('accessToken',token)
-                    console.log(token);
-                    navigate(from, { replace: true })
+                .then(res => res.json())
+                .then(data => {
+                    const { token } = data
+                    if (token) {
+                        localStorage.setItem('accessToken', token)
+                        console.log(token);
+                        navigate(from, { replace: true })
 
-                }
-            })
+                    }
+                })
         }
     }, [user])
+
+
+    if(hookloading||googleloading||githubloading)
+    {
+        return <Spinner></Spinner>
+    }
 
     const handleUserMail = (e) => {
         setMail(e.target.value);
@@ -60,53 +69,70 @@ const Login = () => {
     }
     const handleGithubButton = () => {
         signInWithGithub();
-        console.log(githubuser);
+
     }
-    // const handleResetPassword = async () => {
-    //     if (!mail) {
-    //         toast("Oops!! you forgot to enter your mail!");
-    //     }
-    //     else {
-    //         toast('Your reset password link sent to your mail!')
-    //         await sendPasswordResetEmail(mail);
-    //     }
-    // }
+    if(hookerror)
+    {
+        console.log(hookerror);
+    }
+    const handleResetPassword = async () => {
+        if (!mail) {
+            toast("Oops!! you forgot to enter your mail!");
+        }
+        else {
+            toast('Your reset password link sent to your mail!')
+            await sendPasswordResetEmail(mail);
+        }
+    }
+
     return (
         <>
-            <section class="breadcrumb-area breadcrumb-bg title-background">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="breadcrumb-content  text-center">
+            <section className="breadcrumb-area breadcrumb-bg title-background">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="breadcrumb-content  text-center">
                                 <h2>Login</h2>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <section class="login-register-area gray-lite pb-120">
-                <div class="container">
-                    <div class="login-reg-wrap">
-                        <div class="row no-gutters">
-                            <div class="col-lg-6 mx-auto">
-                                <div class="login-wrap">
-                                    <h3 class="widget-title">Log in your <span>account</span></h3>
-                                    <form action="#" onSubmit={handleFormsubmit} class="login-form">
-                                        <div class="form-grp">
+            <section className="login-register-area gray-lite pb-120">
+                <div className="container">
+                    <div className="login-reg-wrap">
+                        <div className="row no-gutters">
+                            <div className="col-lg-6 mx-auto">
+                                <div className="login-wrap">
+                                    <ToastContainer
+                                        position="top-right"
+                                        autoClose={5000}
+                                        hideProgressBar={false}
+                                        newestOnTop={false}
+                                        closeOnClick
+                                        rtl={false}
+                                        pauseOnFocusLoss
+                                        draggable
+                                        pauseOnHover
+                                    />
+                                    <h3 className="widget-title">Log in your <span>account</span></h3>
+                                    <form action="#" onSubmit={handleFormsubmit} className="login-form">
+                                        <div className="form-grp">
                                             <label for="username">Email or Username <span>*</span></label>
                                             <input type="text" onBlur={handleUserMail} required id="username" placeholder="Jon Deo" />
                                         </div>
-                                        <div class="form-grp">
+                                        <div className="form-grp">
                                             <label for="password">Password <span>*</span></label>
                                             <input onBlur={handleUserPassword} required type="password" id="password" placeholder="*****" />
                                         </div>
                                         <p>Dont Have a Account?<strong> <Link to="/signup">Sign Up</Link></strong> </p>
-                                        <button class="btn-special">Login</button>
-                                        {hookerror ? <>
+                                        <p>Forgot Password? <strong onClick={handleResetPassword}>Reset Password</strong> </p>
+                                        <button className="btn-special" type='submit'>Login</button>
+                                        {hookerror || googleerror || githuberror ? <>
                                             <div className="text-center my-2">
-                                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                    <strong>{hookerror.message}</strong>
+                                                <div className="alert alert-danger alert-dismissible fade show" role="alert">
+                                                    <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                    <strong>{hookerror?.message}{googleerror?.message}{githuberror?.message}</strong>
                                                 </div>
                                             </div>
                                         </> : ''}
