@@ -11,6 +11,7 @@ import ManageInventory from './Components/ManageInventory/ManageInventory';
 import Spinner from './Components/Spinner/Spinner';
 import RequireAuth from './Components/RequireAuth/RequireAuth';
 import MyProducts from './Components/MyProducts/MyProducts';
+import Blogs from './Components/Blogs/Blogs';
 
 function App() {
   return (
@@ -41,11 +42,13 @@ function App() {
 
         <Route path='/myproducts' element={
           <RequireAuth>
-           <MyProducts></MyProducts>
+            <MyProducts></MyProducts>
           </RequireAuth>
         }></Route>
 
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
+
         <Route path='/signup' element={<Signup></Signup>}></Route>
       </Routes>
       <Footer></Footer>
