@@ -11,7 +11,7 @@ const ProductList = () => {
     const navigate = useNavigate();
     useEffect(() => {
         setSpinnerLoading(true)
-        fetch(`https://murmuring-brook-11258.herokuapp.com/readCarsData?limit=6`)
+        fetch(`https://carsrus-minionsrahat.vercel.app/readCarsData?limit=6`)
             .then(res => res.json())
             .then(data => setProduct(data))
             .finally(()=>{

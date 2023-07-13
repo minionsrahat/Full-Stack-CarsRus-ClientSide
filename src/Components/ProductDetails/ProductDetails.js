@@ -18,7 +18,7 @@ const ProductDetails = () => {
    
 
     useEffect(()=>{
-        fetch(`https://murmuring-brook-11258.herokuapp.com/readSingleCarsData/${id}`)
+        fetch(`https://carsrus-minionsrahat.vercel.app/readSingleCarsData/${id}`)
         .then(res=>res.json())
         .then(data=> {
             setProduct(data)
@@ -30,7 +30,7 @@ const ProductDetails = () => {
 
     const deliverProduct=()=>{
         const token = localStorage.getItem('accessToken')
-        fetch(`https://murmuring-brook-11258.herokuapp.com/deliverCarData/${id}`, {
+        fetch(`https://carsrus-minionsrahat.vercel.app/deliverCarData/${id}`, {
             method: "PUT",
             headers: { 'Content-Type': 'application/json',
             accesstoken:`${email} ${token}`}
@@ -58,7 +58,7 @@ const ProductDetails = () => {
     const handleFormsubmit=(e)=>{
         const token = localStorage.getItem('accessToken')
         e.preventDefault()
-        fetch("https://murmuring-brook-11258.herokuapp.com/updateStock", {
+        fetch("https://carsrus-minionsrahat.vercel.app/updateStock", {
             method: "POST",
             headers: { 'Content-Type': 'application/json',
             accesstoken:`${email} ${token}`

@@ -45,7 +45,7 @@ const AddProducts = () => {
             email:email
         }
         e.preventDefault();
-        fetch("https://murmuring-brook-11258.herokuapp.com/addCarsData", {
+        fetch("https://carsrus-minionsrahat.vercel.app/addCarsData", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

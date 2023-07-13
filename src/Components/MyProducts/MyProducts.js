@@ -10,7 +10,7 @@ const MyProducts = () => {
     const email = user?.email
 
     useEffect(() => {
-        fetch(`https://murmuring-brook-11258.herokuapp.com/readmyCarsData?email=${email}`)
+        fetch(`https://carsrus-minionsrahat.vercel.app/readmyCarsData?email=${email}`)
             .then(res => res.json())
             .then(data => setProduct(data));
     }, [])
@@ -24,7 +24,7 @@ const MyProducts = () => {
         let isExecuted = window.confirm("Are you sure to delete this car data");
 
         if (isExecuted) {
-            fetch(`https://murmuring-brook-11258.herokuapp.com/deleteCarData/${id}`, {
+            fetch(`https://carsrus-minionsrahat.vercel.app/deleteCarData/${id}`, {
                 method: "DELETE",
                 headers: {
                     accesstoken: `${email} ${token}`

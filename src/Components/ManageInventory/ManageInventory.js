@@ -22,7 +22,7 @@ const ManageInventory = () => {
         const token = localStorage.getItem('accessToken')
         let isExecuted = window.confirm("Are you sure to delete this car data");
         if (isExecuted) {
-            fetch(`https://murmuring-brook-11258.herokuapp.com/deleteCarData/${id}`, {
+            fetch(`https://carsrus-minionsrahat.vercel.app/deleteCarData/${id}`, {
                 method: "DELETE",
                 headers: {
                     accesstoken: `${email} ${token}`

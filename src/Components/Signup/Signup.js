@@ -26,7 +26,7 @@ const Signup = () => {
     useEffect(() => {
         if (user) {
 
-            fetch('https://murmuring-brook-11258.herokuapp.com/login', {
+            fetch('https://carsrus-minionsrahat.vercel.app/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

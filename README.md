@@ -2,7 +2,7 @@
 HELLLLOOOO
 Live Site Link: [https://cars-r-us-afd67.web.app/](https://cars-r-us-afd67.web.app/).
 
-Live Server Site Link: [https://murmuring-brook-11258.herokuapp.com/](https://murmuring-brook-11258.herokuapp.com/).
+Live Server Site Link: [https://carsrus-minionsrahat.vercel.app/](https://carsrus-minionsrahat.vercel.app/).
 
 
 StackOverflow Question : [https://stackoverflow.com/questions/72158797/how-to-display-a-spinner-when-data-is-loading-from-server-by-fetch-api-in-react](https://stackoverflow.com/questions/72158797/how-to-display-a-spinner-when-data-is-loading-from-server-by-fetch-api-in-react)
