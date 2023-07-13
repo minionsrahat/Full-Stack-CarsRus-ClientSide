@@ -26,7 +26,6 @@ const Login = () => {
 
     useEffect(() => {
         if (user) {
-
             fetch('https://murmuring-brook-11258.herokuapp.com/login', {
                 method: 'POST',
                 headers: {

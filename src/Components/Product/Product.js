@@ -45,7 +45,7 @@ const Product = (props) =>{
                             {des}
                         </p>
                         
-                        <p className='product-des'>
+                        <p className=''>
                            Quantity: {quantity}
                         </p>
                         <p className="">
