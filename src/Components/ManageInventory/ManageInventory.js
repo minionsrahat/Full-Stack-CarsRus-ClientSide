@@ -22,7 +22,7 @@ const ManageInventory = () => {
         const token = localStorage.getItem('accessToken')
         let isExecuted = window.confirm("Are you sure to delete this car data");
         if (isExecuted) {
-            fetch(`https://carsrus-minionsrahat.vercel.app/deleteCarData/${id}`, {
+            fetch(`https://fancy-beret-dog.cyclic.app/deleteCarData/${id}`, {
                 method: "DELETE",
                 headers: {
                     accesstoken: `${email} ${token}`

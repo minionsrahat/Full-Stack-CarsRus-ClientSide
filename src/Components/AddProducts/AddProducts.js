@@ -45,7 +45,7 @@ const AddProducts = () => {
             email:email
         }
         e.preventDefault();
-        fetch("https://carsrus-minionsrahat.vercel.app/addCarsData", {
+        fetch("https://fancy-beret-dog.cyclic.app/addCarsData", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

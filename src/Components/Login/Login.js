@@ -26,7 +26,7 @@ const Login = () => {
 
     useEffect(() => {
         if (user) {
-            fetch('https://carsrus-minionsrahat.vercel.app/login', {
+            fetch('https://fancy-beret-dog.cyclic.app/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
