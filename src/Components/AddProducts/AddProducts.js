@@ -45,7 +45,7 @@ const AddProducts = () => {
             email:email
         }
         e.preventDefault();
-        fetch("https://fancy-beret-dog.cyclic.app/addCarsData", {
+        fetch("https://carsrus.onrender.com/addCarsData", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

@@ -10,7 +10,7 @@ const MyProducts = () => {
     const email = user?.email
 
     useEffect(() => {
-        fetch(`https://fancy-beret-dog.cyclic.app/readmyCarsData?email=${email}`)
+        fetch(`https://carsrus.onrender.com/readmyCarsData?email=${email}`)
             .then(res => res.json())
             .then(data => setProduct(data));
     }, [])
@@ -24,7 +24,7 @@ const MyProducts = () => {
         let isExecuted = window.confirm("Are you sure to delete this car data");
 
         if (isExecuted) {
-            fetch(`https://fancy-beret-dog.cyclic.app/deleteCarData/${id}`, {
+            fetch(`https://carsrus.onrender.com/deleteCarData/${id}`, {
                 method: "DELETE",
                 headers: {
                     accesstoken: `${email} ${token}`

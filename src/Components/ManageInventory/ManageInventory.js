@@ -22,7 +22,7 @@ const ManageInventory = () => {
         const token = localStorage.getItem('accessToken')
         let isExecuted = window.confirm("Are you sure to delete this car data");
         if (isExecuted) {
-            fetch(`https://fancy-beret-dog.cyclic.app/deleteCarData/${id}`, {
+            fetch(`https://carsrus.onrender.com/deleteCarData/${id}`, {
                 method: "DELETE",
                 headers: {
                     accesstoken: `${email} ${token}`

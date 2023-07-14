@@ -4,10 +4,10 @@ const useProdcuts=(limit)=>{
     const [product, setProduct]=useState([]);
     let url;
     if(limit){
-        url=`https://fancy-beret-dog.cyclic.app/readCarsData?limit=${limit}`
+        url=`https://carsrus.onrender.com/readCarsData?limit=${limit}`
     }
     else{
-        url=`https://fancy-beret-dog.cyclic.app/readCarsData`;
+        url=`https://carsrus.onrender.com/readCarsData`;
     }
     useEffect(()=>{
         fetch(url)

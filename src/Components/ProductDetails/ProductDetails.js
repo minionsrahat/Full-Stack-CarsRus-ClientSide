@@ -18,7 +18,7 @@ const ProductDetails = () => {
    
 
     useEffect(()=>{
-        fetch(`https://fancy-beret-dog.cyclic.app/readSingleCarsData/${id}`)
+        fetch(`https://carsrus.onrender.com/readSingleCarsData/${id}`)
         .then(res=>res.json())
         .then(data=> {
             setProduct(data)
@@ -30,7 +30,7 @@ const ProductDetails = () => {
 
     const deliverProduct=()=>{
         const token = localStorage.getItem('accessToken')
-        fetch(`https://fancy-beret-dog.cyclic.app/deliverCarData/${id}`, {
+        fetch(`https://carsrus.onrender.com/deliverCarData/${id}`, {
             method: "PUT",
             headers: { 'Content-Type': 'application/json',
             accesstoken:`${email} ${token}`}
@@ -58,7 +58,7 @@ const ProductDetails = () => {
     const handleFormsubmit=(e)=>{
         const token = localStorage.getItem('accessToken')
         e.preventDefault()
-        fetch("https://fancy-beret-dog.cyclic.app/updateStock", {
+        fetch("https://carsrus.onrender.com/updateStock", {
             method: "POST",
             headers: { 'Content-Type': 'application/json',
             accesstoken:`${email} ${token}`

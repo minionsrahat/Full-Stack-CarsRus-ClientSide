@@ -26,7 +26,7 @@ const Signup = () => {
     useEffect(() => {
         if (user) {
 
-            fetch('https://fancy-beret-dog.cyclic.app/login', {
+            fetch('https://carsrus.onrender.com/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

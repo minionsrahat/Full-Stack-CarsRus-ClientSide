@@ -11,7 +11,7 @@ const ProductList = () => {
     const navigate = useNavigate();
     useEffect(() => {
         setSpinnerLoading(true)
-        fetch(`https://fancy-beret-dog.cyclic.app/readCarsData?limit=6`)
+        fetch(`https://carsrus.onrender.com/readCarsData?limit=6`)
             .then(res => res.json())
             .then(data => setProduct(data))
             .finally(()=>{
